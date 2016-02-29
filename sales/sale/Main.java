@@ -44,16 +44,25 @@ public class Main {
 		Register r1 = new Register(cashierOne.getUsername());
 		r1.logon();
 
-		System.out.println("Enter one of the following: sale, logoff:");
-		String firstAction = keyboard.nextLine();
-		if (firstAction.equals("logoff")) {
-			r1.logoff();
-		} else if (firstAction.equals("sale")) {
-			System.out.println("Enter sale amount: ");
-			Sale s1 = new Sale(r1.getRegister());
-			s1.addSale(Double.valueOf(keyboard.nextLine()));
-			System.out.println("Sale added.  Total sales are "
-					+ s1.getTotalSales());
+		int transactions_max = 0; // set max to 10 transactions
+		while (transactions_max < 10) {
+			System.out
+					.println("Enter one of the following: sale, report, logoff:");
+			String firstAction = keyboard.nextLine();
+			if (firstAction.equals("logoff")) {
+				r1.logoff();
+			} else if (firstAction.equals("sale")) {
+				System.out.println("Enter sale amount: ");
+				Sale s1 = new Sale(r1.getRegister());
+				s1.addSale(Double.valueOf(keyboard.nextLine()));
+				System.out.println("Sale added.  Total sales are "
+						+ s1.getTotalSales());
+			} else if (firstAction.equals("report")) {
+				// System.out.println("For user " + cashierOne.getUsername()
+				// + ", for register " + String.valueOf(r1.getRegister())
+				// + " Total sales are " + s1.getTotalSales());
+			}
+			transactions_max = transactions_max + 1;
 		}
 
 	}
