@@ -15,7 +15,6 @@ public class Main {
 		System.out.println("Welcome to the Point-Of-Sale Registration System");
 
 		Cashier cashierOne = new Cashier();
-		// cashierOne.checkUser("Josh");
 
 		boolean validUsername = false;
 		while (validUsername == false) {
@@ -42,7 +41,20 @@ public class Main {
 		}
 
 		cashierOne.proceedToLogin(cashierOne.getUsername());
+		Register r1 = new Register(cashierOne.getUsername());
+		r1.logon();
+
+		System.out.println("Enter one of the following: sale, logoff:");
+		String firstAction = keyboard.nextLine();
+		if (firstAction.equals("logoff")) {
+			r1.logoff();
+		} else if (firstAction.equals("sale")) {
+			System.out.println("Enter sale amount: ");
+			Sale s1 = new Sale(r1.getRegister());
+			s1.addSale(Double.valueOf(keyboard.nextLine()));
+			System.out.println("Sale added.  Total sales are "
+					+ s1.getTotalSales());
+		}
 
 	}
-
 }
