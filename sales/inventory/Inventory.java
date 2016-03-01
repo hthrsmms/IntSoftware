@@ -1,3 +1,4 @@
+package inventory;
 
 public class Inventory {
 	String number;

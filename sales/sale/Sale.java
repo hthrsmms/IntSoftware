@@ -5,8 +5,8 @@ public class Sale {
 	private double sale_amount;
 	private double total_sales;
 
-	public Sale(int register_num) {
-		register = register_num;
+	public Sale() {
+		// register = register_num;
 		// sale_amount = amount;
 		// addSale(sale_amount);
 	}
