@@ -80,7 +80,7 @@ public class Inventory {
 				+ "\nQuantity in Stock: " + quantity + "\nReorder Threshold: "
 				+ threshold + "\nHow Close to Threshold: "
 				+ getInventoryThreshold() + "\nReorder Status: "
-				+ getThresholdStatus();
+				+ getThresholdStatus() + "\n";
 	}
 
 	// Josh: add getter

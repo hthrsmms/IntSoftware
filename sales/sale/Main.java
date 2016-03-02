@@ -68,10 +68,11 @@ public class Main {
 		int transactions_max = 0; // set max to 10 transactions
 		while (transactions_max < 10) {
 			System.out
-					.println("Enter one of the following: sale, report, logoff:");
+					.println("Enter one of the following: sale, inventory, report, logoff:");
 			String firstAction = keyboard.nextLine();
 			if (firstAction.equals("logoff")) {
 				r1.logoff();
+				break; // end program
 			} else if (firstAction.equals("sale")) {
 				System.out.println("Enter an item to sell. Options: "
 						+ products);
@@ -99,8 +100,6 @@ public class Main {
 				System.out.println("Enter unit amount: ");
 				String saleAmount = keyboard.nextLine();
 				r1.addSale(Integer.valueOf(saleAmount));
-				// Sale s1 = new Sale(r1.getRegister());
-				// s1.addSale(Double.valueOf(keyboard.nextLine()));
 				System.out.println("Sale added.  Total unit sales are "
 						+ r1.getTotalSales());
 
@@ -108,7 +107,39 @@ public class Main {
 				allInventory[selectedIndex].decreaseInventory(Integer
 						.valueOf(saleAmount));
 
-			} else if (firstAction.equals("report")) {
+			} else if (firstAction.equals("inventory")) {
+				System.out
+						.println("Enter an item increase inventory. Options: "
+								+ products);
+
+				// get the user to select a product in catalog to sell
+				int selectedIndex = -1;
+				boolean validProduct = false;
+				while (validProduct == false) {
+					String product = keyboard.nextLine();
+					for (int i = 0; i < products.size(); i++) {
+						if (product.equals(products.get(i))) {
+							selectedIndex = i;
+						}
+					}
+					try {
+						System.out.println("You selected: "
+								+ products.get(selectedIndex));
+						validProduct = true;
+					} catch (Exception e) {
+						logger.info("Invalid product name, please try again!");
+					}
+
+				}
+
+				System.out.println("Enter unit amount: ");
+				String adjAmount = keyboard.nextLine();
+				// update inventory
+				allInventory[selectedIndex].increaseInventory(Integer
+						.valueOf(adjAmount));
+			}
+
+			else if (firstAction.equals("report")) {
 				System.out.println("For user " + c1.getUsername()
 						+ ", for register " + String.valueOf(r1.getRegister())
 						+ " Total sales are " + r1.getTotalSales() + "\n");
