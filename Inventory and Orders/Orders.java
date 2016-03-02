@@ -1,24 +1,28 @@
 
+
 public class Orders {
 
-	// Creates inventory and orders
+	String ordNumber;
+	String prodNumber;
+	String ordDate;
+	int ordQuantity; // quantity of items ordered
+	String supplier;
 
-	public static void main(String[] args) {
-		Inventory product1 = new Inventory("ABC100", "Apples", 10, 1.00, "Supplier1", 1);
-		Inventory product2 = new Inventory("DEF200", "Oranges", 20, 2.00, "Supplier2", 10);
-		Inventory product3 = new Inventory("XYZ300", "Bananas", 15, .55, "Supplier3", 15);
-
-		// testing increasing and decreasing inventory
-		product1.increaseInventory(20);
-		product2.decreaseInventory(10);
-
-		// print current inventory info
-		System.out.println();
-		System.out.println(product1);
-		System.out.println();
-		System.out.println(product2);
-		System.out.println();
-		System.out.println(product3);
-
+	
+	// Set up inventory with beginning quantity in stock
+	public Orders(String orderNumber, String orderDate, String productNumber, int orderQuantity, String orderSupplier) {
+	
+		ordNumber = orderNumber;
+		ordDate = orderDate;
+		prodNumber = productNumber;
+		ordQuantity = orderQuantity;
+		supplier = orderSupplier;
 	}
+	
+	
+	public String toString() {
+		return "Order Number: " + ordNumber + "\nOrder Date: " + ordDate + "\nProduct Number:"+prodNumber 
+				+ "\nOrder Quantity:"+ ordQuantity + "\nSupplier:" + supplier ;
+	}
+
 }
