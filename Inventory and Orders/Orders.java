@@ -1,3 +1,5 @@
+import inventory.Inventory;
+
 
 public class Orders {
 

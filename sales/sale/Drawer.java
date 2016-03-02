@@ -1,10 +1,10 @@
 package sale;
 
-public class Drawer extends Sale {
+public class Drawer extends Register {
 
-	public Drawer(int register_num, String cashier_name) {
-		super(register_num);
-		// TODO Auto-generated constructor stub
+	public Drawer(String cashier_name) {
+		super(cashier_name);
+
 	}
 
 }

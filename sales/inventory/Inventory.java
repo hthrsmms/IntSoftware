@@ -1,3 +1,4 @@
+package inventory;
 
 public class Inventory {
 	String number;
@@ -8,8 +9,9 @@ public class Inventory {
 	int threshold;
 
 	// Set up inventory with beginning quantity in stock
-	public Inventory(String productNumber, String productName, int productQuantity, double productPrice,
-			String productSupplier, int productThreshold) {
+	public Inventory(String productNumber, String productName,
+			int productQuantity, double productPrice, String productSupplier,
+			int productThreshold) {
 		number = productNumber;
 		name = productName;
 		quantity = productQuantity;
@@ -72,10 +74,17 @@ public class Inventory {
 
 	// Inventory information
 	public String toString() {
-		return "Product: " + name + "\nProduct Number: " + number + "\nSupplier: " + supplier + "\nPrice Per Item: $"
-				+ price + "\nTotal Price in Inventory: $" + getInventoryPrice() + "\nQuantity in Stock: " + quantity
-				+ "\nReorder Threshold: " + threshold + "\nHow Close to Threshold: " + getInventoryThreshold()
-				+ "\nReorder Status: " + getThresholdStatus();
+		return "Product: " + name + "\nProduct Number: " + number
+				+ "\nSupplier: " + supplier + "\nPrice Per Item: $" + price
+				+ "\nTotal Price in Inventory: $" + getInventoryPrice()
+				+ "\nQuantity in Stock: " + quantity + "\nReorder Threshold: "
+				+ threshold + "\nHow Close to Threshold: "
+				+ getInventoryThreshold() + "\nReorder Status: "
+				+ getThresholdStatus();
 	}
 
+	// Josh: add getter
+	public String getName() {
+		return name;
+	}
 }

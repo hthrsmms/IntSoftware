@@ -1,7 +1,7 @@
 package sale;
 
-public class Register {
-	private final int MAX = 5;
+public class Register extends Sale {
+	private final int MAX = 5;// set register num from 1 to 5
 	private int register_num;
 	private boolean logon = false;
 	private String cashier = "";
