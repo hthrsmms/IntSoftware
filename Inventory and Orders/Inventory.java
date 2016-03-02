@@ -1,55 +1,57 @@
 
 public class Inventory {
-	String invNumber;
-	String invName;
-	int invQuantity; // quantity of item in stock
-	double invPrice;
+	String number;
+	String name;
+	int quantity; // quantity of item in stock
+	double price;
+	String supplier;
 	int threshold;
 
 	// Set up inventory with beginning quantity in stock
 	public Inventory(String productNumber, String productName, int productQuantity, double productPrice,
-			 int productThreshold) {
-		invNumber = productNumber;
-		invName = productName;
-		invQuantity = productQuantity;
-		invPrice = productPrice;
+			String productSupplier, int productThreshold) {
+		number = productNumber;
+		name = productName;
+		quantity = productQuantity;
+		price = productPrice;
+		supplier = productSupplier;
 		threshold = productThreshold;
 	}
 
 	// Adds items to inventory
 	public int increaseInventory(int amount) {
 		if (amount > 0)
-			invQuantity = invQuantity + amount;
-		return invQuantity;
+			quantity = quantity + amount;
+		return quantity;
 	}
 
 	// Decrease inventory by amount of outstanding order
-	public int decreaseInventory(int amount) {
+	public double decreaseInventory(int amount) {
 		if (amount > 0)
-			invQuantity = invQuantity - amount;
-		return invQuantity;
+			quantity = quantity - amount;
+		return quantity;
 	}
 
 	// Current quantity of inventory
 	public int getQuantity() {
-		return invQuantity;
+		return quantity;
 	}
 
 	// Calculate price of inventory
 	public double getInventoryPrice() {
-		return invPrice * invQuantity;
+		return price * quantity;
 	}
 
 	// Calculate how far from reorder
 	public int getInventoryThreshold() {
-		return invQuantity - threshold;
+		return quantity - threshold;
 	}
 
 	// if less than 5 units in stock, set status to reorder
 	public String getThresholdStatus() {
 		int threshCalculated;
 		String threshOrder;
-		threshCalculated = invQuantity - threshold;
+		threshCalculated = quantity - threshold;
 
 		if (threshCalculated > 5)
 			threshOrder = "Plenty in stock";
@@ -70,8 +72,8 @@ public class Inventory {
 
 	// Inventory information
 	public String toString() {
-		return "Product: " + invName + "\nProduct Number: " + invNumber + "\nPrice Per Item: $"
-				+ invPrice + "\nTotal Price in Inventory: $" + getInventoryPrice() + "\nQuantity in Stock: " + invQuantity
+		return "Product: " + name + "\nProduct Number: " + number + "\nSupplier: " + supplier + "\nPrice Per Item: $"
+				+ price + "\nTotal Price in Inventory: $" + getInventoryPrice() + "\nQuantity in Stock: " + quantity
 				+ "\nReorder Threshold: " + threshold + "\nHow Close to Threshold: " + getInventoryThreshold()
 				+ "\nReorder Status: " + getThresholdStatus();
 	}
