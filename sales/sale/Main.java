@@ -30,7 +30,6 @@ public class Main {
 		products.add(product1.getName());
 		products.add(product2.getName());
 		products.add(product3.getName());
-
 		Inventory allInventory[] = new Inventory[] { product1, product2,
 				product3 };
 
