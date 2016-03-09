@@ -1,7 +1,7 @@
 package inventory;
 
 public class Inventory {
-	String number;
+	String upc;
 	String name;
 	int quantity; // quantity of item in stock
 	double price;
@@ -12,7 +12,7 @@ public class Inventory {
 	public Inventory(String productNumber, String productName,
 			int productQuantity, double productPrice, String productSupplier,
 			int productThreshold) {
-		number = productNumber;
+		upc = productNumber;
 		name = productName;
 		quantity = productQuantity;
 		price = productPrice;
@@ -74,8 +74,8 @@ public class Inventory {
 
 	// Inventory information
 	public String toString() {
-		return "Product: " + name + "\nProduct Number: " + number
-				+ "\nSupplier: " + supplier + "\nPrice Per Item: $" + price
+		return "Product: " + name + "\nProduct Upc: " + upc + "\nSupplier: "
+				+ supplier + "\nPrice Per Item: $" + price
 				+ "\nTotal Price in Inventory: $" + getInventoryPrice()
 				+ "\nQuantity in Stock: " + quantity + "\nReorder Threshold: "
 				+ threshold + "\nHow Close to Threshold: "
@@ -86,5 +86,10 @@ public class Inventory {
 	// Josh: add getter
 	public String getName() {
 		return name;
+	}
+
+	// Josh: add getter
+	public String getUpc() {
+		return upc;
 	}
 }

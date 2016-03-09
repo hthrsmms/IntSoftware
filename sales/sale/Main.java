@@ -27,9 +27,9 @@ public class Main {
 				"Supplier3", 15);
 
 		// add products to list for available to sell
-		products.add(product1.getName());
-		products.add(product2.getName());
-		products.add(product3.getName());
+		products.add(product1.getUpc());
+		products.add(product2.getUpc());
+		products.add(product3.getUpc());
 		Inventory allInventory[] = new Inventory[] { product1, product2,
 				product3 };
 
@@ -99,13 +99,23 @@ public class Main {
 
 				System.out.println("Enter unit amount: ");
 				String saleAmount = keyboard.nextLine();
-				r1.addSale(Integer.valueOf(saleAmount));
-				System.out.println("Sale added.  Total unit sales are "
-						+ r1.getTotalSales());
 
-				// update inventory
-				allInventory[selectedIndex].decreaseInventory(Integer
-						.valueOf(saleAmount));
+				// check if enough in-stock
+				int remaining_inv = allInventory[selectedIndex].getQuantity();
+				if (remaining_inv < Integer.valueOf(saleAmount)) {
+					logger.info("Not enough in-stock to complete purchase");
+				} else {
+
+					r1.addSale(Integer.valueOf(saleAmount));
+					System.out.println("Sale number "
+							+ String.valueOf(r1.getSaleNum())
+							+ " added.  Total unit sales are "
+							+ r1.getTotalSales());
+
+					// update inventory
+					allInventory[selectedIndex].decreaseInventory(Integer
+							.valueOf(saleAmount));
+				}
 
 			} else if (firstAction.equals("inventory")) {
 				System.out
