@@ -2,9 +2,9 @@
 public class Inventory {
 	String invNumber;
 	String invName;
-	int invQuantity; // quantity of item in stock
+	static int invQuantity; // quantity of item in stock
 	double invPrice;
-	int threshold;
+	static int threshold;
 
 	// Set up inventory with beginning quantity in stock
 	public Inventory(String productNumber, String productName, int productQuantity, double productPrice,
@@ -46,15 +46,15 @@ public class Inventory {
 	}
 
 	// if less than 5 units in stock, set status to reorder
-	public String getThresholdStatus() {
+	public boolean getThresholdStatus() {
 		int threshCalculated;
-		String threshOrder;
+		boolean threshOrder;
 		threshCalculated = invQuantity - threshold;
 
 		if (threshCalculated > 5)
-			threshOrder = "Plenty in stock";
+			threshOrder = false;
 		else
-			threshOrder = "REORDER SOON!";
+			threshOrder = true;
 		return threshOrder;
 	}
 
@@ -75,5 +75,11 @@ public class Inventory {
 				+ "\nReorder Threshold: " + threshold + "\nHow Close to Threshold: " + getInventoryThreshold()
 				+ "\nReorder Status: " + getThresholdStatus();
 	}
+	
+	// Josh: add getter
+		public String getName() {
+			return invName;
+		}
+		
 
 }
