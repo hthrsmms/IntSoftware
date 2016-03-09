@@ -19,12 +19,9 @@ public class Main {
 		List<String> products = new ArrayList<String>();
 
 		// add inventory. assumption we have three products to sell
-		Inventory product1 = new Inventory("ABC100", "Apples", 10, 1.00,
-				"Supplier1", 1);
-		Inventory product2 = new Inventory("DEF200", "Oranges", 20, 2.00,
-				"Supplier2", 10);
-		Inventory product3 = new Inventory("XYZ300", "Bananas", 15, .55,
-				"Supplier3", 15);
+		Inventory product1 = new Inventory("ABC100", "Apples", 10, 1.00, 1);
+		Inventory product2 = new Inventory("DEF200", "Oranges", 20, 2.00, 10);
+		Inventory product3 = new Inventory("XYZ300", "Bananas", 15, .55, 15);
 
 		// add products to list for available to sell
 		products.add(product1.getUpc());

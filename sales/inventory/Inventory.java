@@ -2,63 +2,60 @@ package inventory;
 
 public class Inventory {
 	String upc;
-	String name;
-	int quantity; // quantity of item in stock
-	double price;
-	String supplier;
-	int threshold;
+	String invName;
+	static int invQuantity; // quantity of item in stock
+	double invPrice;
+	static int threshold;
 
 	// Set up inventory with beginning quantity in stock
 	public Inventory(String productNumber, String productName,
-			int productQuantity, double productPrice, String productSupplier,
-			int productThreshold) {
+			int productQuantity, double productPrice, int productThreshold) {
 		upc = productNumber;
-		name = productName;
-		quantity = productQuantity;
-		price = productPrice;
-		supplier = productSupplier;
+		invName = productName;
+		invQuantity = productQuantity;
+		invPrice = productPrice;
 		threshold = productThreshold;
 	}
 
 	// Adds items to inventory
 	public int increaseInventory(int amount) {
 		if (amount > 0)
-			quantity = quantity + amount;
-		return quantity;
+			invQuantity = invQuantity + amount;
+		return invQuantity;
 	}
 
 	// Decrease inventory by amount of outstanding order
-	public double decreaseInventory(int amount) {
+	public int decreaseInventory(int amount) {
 		if (amount > 0)
-			quantity = quantity - amount;
-		return quantity;
+			invQuantity = invQuantity - amount;
+		return invQuantity;
 	}
 
 	// Current quantity of inventory
 	public int getQuantity() {
-		return quantity;
+		return invQuantity;
 	}
 
 	// Calculate price of inventory
 	public double getInventoryPrice() {
-		return price * quantity;
+		return invPrice * invQuantity;
 	}
 
 	// Calculate how far from reorder
 	public int getInventoryThreshold() {
-		return quantity - threshold;
+		return invQuantity - threshold;
 	}
 
 	// if less than 5 units in stock, set status to reorder
-	public String getThresholdStatus() {
+	public boolean getThresholdStatus() {
 		int threshCalculated;
-		String threshOrder;
-		threshCalculated = quantity - threshold;
+		boolean threshOrder;
+		threshCalculated = invQuantity - threshold;
 
 		if (threshCalculated > 5)
-			threshOrder = "Plenty in stock";
+			threshOrder = false;
 		else
-			threshOrder = "REORDER SOON!";
+			threshOrder = true;
 		return threshOrder;
 	}
 
@@ -74,22 +71,22 @@ public class Inventory {
 
 	// Inventory information
 	public String toString() {
-		return "Product: " + name + "\nProduct Upc: " + upc + "\nSupplier: "
-				+ supplier + "\nPrice Per Item: $" + price
-				+ "\nTotal Price in Inventory: $" + getInventoryPrice()
-				+ "\nQuantity in Stock: " + quantity + "\nReorder Threshold: "
-				+ threshold + "\nHow Close to Threshold: "
-				+ getInventoryThreshold() + "\nReorder Status: "
-				+ getThresholdStatus() + "\n";
+		return "Product: " + invName + "\nUpc: " + upc + "\nPrice Per Item: $"
+				+ invPrice + "\nTotal Price in Inventory: $"
+				+ getInventoryPrice() + "\nQuantity in Stock: " + invQuantity
+				+ "\nReorder Threshold: " + threshold
+				+ "\nHow Close to Threshold: " + getInventoryThreshold()
+				+ "\nReorder Status: " + getThresholdStatus() + "\n";
 	}
 
 	// Josh: add getter
 	public String getName() {
-		return name;
+		return invName;
 	}
 
 	// Josh: add getter
 	public String getUpc() {
 		return upc;
 	}
+
 }
