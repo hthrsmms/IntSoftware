@@ -103,7 +103,8 @@ public class Main {
 					logger.info("Not enough in-stock to complete purchase");
 				} else {
 
-					r1.addSale(Integer.valueOf(saleAmount));
+					r1.addSale(allInventory[selectedIndex].getUpc(),
+							Integer.valueOf(saleAmount));
 					System.out.println("Sale number "
 							+ String.valueOf(r1.getSaleNum())
 							+ " added.  Total unit sales are "

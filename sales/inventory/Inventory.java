@@ -8,13 +8,12 @@ public class Inventory {
 	static int threshold;
 
 	// Set up inventory with beginning quantity in stock
-	public Inventory(String productNumber, String productName,
-			int productQuantity, double productPrice, int productThreshold) {
+	public Inventory(String productNumber, int productQuantity) {
 		upc = productNumber;
-		invName = productName;
+		// invName = productName;
 		invQuantity = productQuantity;
-		invPrice = productPrice;
-		threshold = productThreshold;
+		// invPrice = productPrice;
+		// threshold = productThreshold;
 	}
 
 	// Adds items to inventory
@@ -80,10 +79,9 @@ public class Inventory {
 	}
 
 	// Josh: add getter
-	public String getName() {
-		return invName;
-	}
-
+	/*
+	 * public String getName() { return invName; }
+	 */
 	// Josh: add getter
 	public String getUpc() {
 		return upc;

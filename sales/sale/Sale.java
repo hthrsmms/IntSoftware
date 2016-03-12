@@ -19,10 +19,10 @@ public class Sale {
 		// addSale(sale_amount);
 	}
 
-	public void addSale(int amount) {
+	public void addSale(String upc, int amount) {
 		total_unit_sales = total_unit_sales + amount;
 		sale_num = sale_num + 1;
-		finalizeSale();
+		finalizeSale(upc, amount);
 	}
 
 	public int getTotalSales() {
@@ -33,7 +33,7 @@ public class Sale {
 		return sale_num;
 	}
 
-	public void finalizeSale() {
+	public void finalizeSale(String upc, int amount) {
 
 		try {
 

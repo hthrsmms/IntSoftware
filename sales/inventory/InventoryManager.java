@@ -16,9 +16,14 @@ public class InventoryManager {
 		ArrayList<Inventory> products = new ArrayList<Inventory>();
 
 		// add inventory to start
-		Inventory product1 = new Inventory("ABC100", "Apples", 10, 1.00, 1);
-		Inventory product2 = new Inventory("DEF200", "Oranges", 20, 2.00, 10);
-		Inventory product3 = new Inventory("XYZ300", "Bananas", 15, .55, 15);
+		// Inventory product1 = new Inventory("ABC100", "Apples", 10, 1.00, 1);
+		// Inventory product2 = new Inventory("DEF200", "Oranges", 20, 2.00,
+		// 10);
+		// Inventory product3 = new Inventory("XYZ300", "Bananas", 15, .55, 15);
+
+		Inventory product1 = new Inventory("ABC100", 10);
+		Inventory product2 = new Inventory("DEF200", 20);
+		Inventory product3 = new Inventory("XYZ300", 15);
 
 		products.add(product1);
 		products.add(product2);

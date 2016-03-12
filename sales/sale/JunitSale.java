@@ -9,7 +9,7 @@ public class JunitSale {
 	@Test
 	public void testGetTotalSales() {
 		Sale test = new Sale();
-		test.addSale(10);
+		test.addSale("apple", 10);
 		double tester = test.getTotalSales();
 		assertEquals(10, tester, 0);
 
