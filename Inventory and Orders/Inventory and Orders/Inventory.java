@@ -1,10 +1,10 @@
 
 public class Inventory {
-	String invNumber;
-	String invName;
-	static int invQuantity; // quantity of item in stock
-	double invPrice;
-	static int threshold;
+	private String invNumber;
+	private String invName;
+	private static int invQuantity; // quantity of item in stock
+	private double invPrice;
+	private static int threshold;
 
 	// Set up inventory with beginning quantity in stock
 	public Inventory(String productNumber, String productName, int productQuantity, double productPrice,
@@ -37,7 +37,8 @@ public class Inventory {
 
 	// Calculate price of inventory
 	public double getInventoryPrice() {
-		return invPrice * invQuantity;
+		double currPrice= invPrice * invQuantity;
+		 return currPrice;
 	}
 
 	// Calculate how far from reorder

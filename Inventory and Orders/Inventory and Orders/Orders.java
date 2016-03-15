@@ -5,16 +5,17 @@ import java.time.ZoneId;
 
 public class Orders {
 
-	String ordNumber;
-	String prodNumber;
-	String ordDate;
-	String remDate;
-	int ordQuantity; // quantity of items ordered
-	String supplier;
+	private String ordNumber;
+	private String prodNumber;
+	private String ordDate;
+	@SuppressWarnings("unused")
+	private String remDate;
+	private int ordQuantity; // quantity of items ordered
+	private String supplier;
 
 	
 	// Set up inventory with beginning quantity in stock
-	public Orders(String orderNumber, String orderDate, String removeDate,String productNumber, int orderQuantity, String orderSupplier) {
+	public Orders(String orderNumber, String orderDate, String removeDate, String productNumber, int orderQuantity, String orderSupplier) {
 	
 		ordNumber = orderNumber;
 		ordDate = orderDate;
@@ -25,7 +26,7 @@ public class Orders {
 	}
 	
 
-	public String todaysDate() {  
+	public static String todaysDate() {  
 	    ZoneId zonedId = ZoneId.of( "America/Chicago" );
 	    LocalDate today = LocalDate.now( zonedId );
 	    String orderDate = today.toString();
@@ -35,9 +36,8 @@ public class Orders {
 	public static  String removalDate() {  //one year from today - indicates when to remove from order history
 	    ZoneId zonedId = ZoneId.of( "America/Chicago" );
 	    LocalDate today = LocalDate.now( zonedId );
-		@SuppressWarnings("unused")
-		LocalDate yearAgo = today.plusYears( 1 );
-	    String removeDate = today.toString();
+		LocalDate nextYear = today.plusYears( 1 );
+	    String removeDate = nextYear.toString();
 	    return removeDate;
 	}	
 	

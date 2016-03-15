@@ -51,7 +51,8 @@ public class InventoryManager {
         //Compares today's date to removal date of Order and removes element if matches
         Iterator<Orders> it = CurrentOrders.iterator();
         while (it.hasNext()) {
-            if (it.next().todaysDate().equals(Orders.removalDate())) {
+            it.next();
+			if (Orders.todaysDate().equals(Orders.removalDate())) {
                 it.remove();
                 break; 
             }
