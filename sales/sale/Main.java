@@ -16,19 +16,18 @@ public class Main {
 	static Scanner keyboard = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		List<String> products = new ArrayList<String>();
-
-		// add inventory. assumption we have three products to sell
-		Inventory product1 = new Inventory("ABC100", "Apples", 10, 1.00, 1);
-		Inventory product2 = new Inventory("DEF200", "Oranges", 20, 2.00, 10);
-		Inventory product3 = new Inventory("XYZ300", "Bananas", 15, .55, 15);
 
 		// add products to list for available to sell
+		Inventory product1 = new Inventory("ABC100", 10);
+		Inventory product2 = new Inventory("DEF200", 20);
+		Inventory product3 = new Inventory("XYZ300", 15);
+
+		Inventory[] allInventory = { product1, product2, product3 };
+
+		List<String> products = new ArrayList<String>();
 		products.add(product1.getUpc());
 		products.add(product2.getUpc());
 		products.add(product3.getUpc());
-		Inventory allInventory[] = new Inventory[] { product1, product2,
-				product3 };
 
 		System.out.println("Welcome to the Point-Of-Sale Registration System");
 

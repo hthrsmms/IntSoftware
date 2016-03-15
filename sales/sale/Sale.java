@@ -11,7 +11,7 @@ public class Sale {
 	private int sale_units;
 	private int total_unit_sales;
 	private String product_name;
-	private int sale_num = 0;
+	private static int sale_num = 0;
 
 	public Sale() {
 		// register = register_num;
@@ -36,14 +36,16 @@ public class Sale {
 	public void finalizeSale(String upc, int amount) {
 
 		try {
-
-			String content = "This is the content to write into file 2";
+			Item i1 = new Item(upc);
+			double invPrice = i1.getProductPrice();
 			Date date = new Date();
-			String fileName = "data/sale" + String.valueOf(getSaleNum()) + "_"
-					+ date.toString() + ".txt";
-			// File file = new File("data/sale1.txt");
-			File file = new File(fileName);
+			String content = date.toString() + "," + upc + ","
+					+ String.valueOf(amount) + ","
+					+ String.valueOf(invPrice * Double.valueOf(amount));
+			String fileName = "data/sale" + String.valueOf(getSaleNum())
+					+ ".txt";
 
+			File file = new File(fileName);
 			// if file doesnt exists, then create it
 			if (!file.exists()) {
 				file.createNewFile();
@@ -59,5 +61,4 @@ public class Sale {
 		}
 
 	}
-
 }

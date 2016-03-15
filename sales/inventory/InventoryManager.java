@@ -8,12 +8,15 @@ import java.util.Scanner;
 
 public class InventoryManager {
 
+	ArrayList<String> upc = new ArrayList<String>();
+	ArrayList<Inventory> products = new ArrayList<Inventory>();
+
 	// Creates and prints inventory and order data
 
-	public static void main(String[] args) {
+	public InventoryManager() {
 
 		// Inventory array
-		ArrayList<Inventory> products = new ArrayList<Inventory>();
+		// ArrayList<Inventory> products = new ArrayList<Inventory>();
 
 		// add inventory to start
 		// Inventory product1 = new Inventory("ABC100", "Apples", 10, 1.00, 1);
@@ -29,6 +32,10 @@ public class InventoryManager {
 		products.add(product2);
 		products.add(product3);
 
+		upc.add(product1.getUpc());
+		upc.add(product2.getUpc());
+		upc.add(product3.getUpc());
+
 		// Orders
 		ArrayList<Orders> CurrentOrders = new ArrayList<Orders>();
 		Orders order1 = new Orders("555REX", "05/01/2014", "05/01/2015",
@@ -39,25 +46,6 @@ public class InventoryManager {
 		CurrentOrders.add(order1);
 		CurrentOrders.add(order2);
 
-		/*
-		 * //to enter in new order from console, if needed Scanner input = new
-		 * Scanner(System.in);
-		 * System.out.println("Please enter Order Number: "); String orderNumber
-		 * = input.nextLine();
-		 * System.out.println("Please enter Product Number: "); String
-		 * productNumber = input.nextLine();
-		 * System.out.println("Please enter Supplier: "); String orderSupplier =
-		 * input.nextLine();
-		 * System.out.println("Please enter Order Quantity: "); int
-		 * orderQuantity = input.nextInt(); String orderDate =
-		 * Orders.todaysDate(); String removalDate = Orders.removalDate();
-		 * 
-		 * Orders objt = new Orders(orderNumber, orderDate, removalDate,
-		 * productNumber, orderQuantity, orderSupplier);
-		 * CurrentOrders.add(objt);
-		 * 
-		 * input.close(); }
-		 */
 		// Compares today's date to removal date of Order and removes element if
 		// matches
 		Iterator<Orders> it = CurrentOrders.iterator();
@@ -95,6 +83,10 @@ public class InventoryManager {
 		}
 
 		requestInventory.close();
+	}
+
+	public String[] getUpc() {
+		return (String[]) (products.toArray());
 	}
 
 }

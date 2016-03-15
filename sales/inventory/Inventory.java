@@ -1,19 +1,26 @@
 package inventory;
 
+import java.util.ArrayList;
+
+import sale.Item;
+
 public class Inventory {
 	String upc;
 	String invName;
 	static int invQuantity; // quantity of item in stock
 	double invPrice;
 	static int threshold;
+	private ArrayList<String> upcList = new ArrayList<String>();
 
 	// Set up inventory with beginning quantity in stock
 	public Inventory(String productNumber, int productQuantity) {
 		upc = productNumber;
-		// invName = productName;
+		Item i1 = new Item(upc);
+		invName = i1.getProductName();
 		invQuantity = productQuantity;
-		// invPrice = productPrice;
-		// threshold = productThreshold;
+		invPrice = i1.getProductPrice();
+		threshold = i1.getProductThreshold();
+		upcList.add(upc);
 	}
 
 	// Adds items to inventory
@@ -78,13 +85,7 @@ public class Inventory {
 				+ "\nReorder Status: " + getThresholdStatus() + "\n";
 	}
 
-	// Josh: add getter
-	/*
-	 * public String getName() { return invName; }
-	 */
-	// Josh: add getter
 	public String getUpc() {
-		return upc;
+		return this.upc;
 	}
-
 }
