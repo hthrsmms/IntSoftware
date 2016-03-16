@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class JunitRegister {
+public class RegisterTest {
 
 	@Test
 	public void testLogon() {

@@ -1,7 +1,9 @@
 package sale;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
@@ -14,9 +16,7 @@ public class Sale {
 	private static int sale_num = 0;
 
 	public Sale() {
-		// register = register_num;
-		// sale_amount = amount;
-		// addSale(sale_amount);
+
 	}
 
 	public void addSale(String upc, int amount) {
@@ -25,8 +25,41 @@ public class Sale {
 		finalizeSale(upc, amount);
 	}
 
-	public int getTotalSales() {
-		return total_unit_sales;
+	public double getTotalSales() {
+		BufferedReader br = null;
+		Double totalSalesAmount = 0.00;
+		try {
+
+			String sCurrentLine;
+
+			File path = new File("data"); // path to your folder.
+			for (File f : path.listFiles()) { // this loops through all the
+												// files + directories
+				if (f.isFile()) {
+
+					br = new BufferedReader(new FileReader(f));
+					while ((sCurrentLine = br.readLine()) != null) {
+						// System.out.println(sCurrentLine);
+						String[] values = sCurrentLine.split(",", -1);
+						totalSalesAmount = totalSalesAmount
+								+ Double.valueOf(values[2]);
+					}
+
+				}
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null)
+					br.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+
+		return totalSalesAmount;
 	}
 
 	public int getSaleNum() {

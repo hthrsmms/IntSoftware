@@ -105,9 +105,7 @@ public class Main {
 					r1.addSale(allInventory[selectedIndex].getUpc(),
 							Integer.valueOf(saleAmount));
 					System.out.println("Sale number "
-							+ String.valueOf(r1.getSaleNum())
-							+ " added.  Total unit sales are "
-							+ r1.getTotalSales());
+							+ String.valueOf(r1.getSaleNum()) + " added.");
 
 					// update inventory
 					allInventory[selectedIndex].decreaseInventory(Integer
@@ -149,7 +147,7 @@ public class Main {
 			else if (firstAction.equals("report")) {
 				System.out.println("For user " + c1.getUsername()
 						+ ", for register " + String.valueOf(r1.getRegister())
-						+ " Total sales are " + r1.getTotalSales() + "\n");
+						+ "\n" + "Total sales $ are $" + r1.getTotalSales());
 
 				System.out.println(product1.toString());
 				System.out.println(product2.toString());
